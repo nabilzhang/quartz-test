@@ -30,7 +30,10 @@ public class Manager implements ApplicationRunner {
 
         CronTrigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("trigger1", "group1")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+                .withSchedule(
+                        CronScheduleBuilder.cronSchedule("0/5 * * * * ?")
+                                .withMisfireHandlingInstructionFireAndProceed()
+                )
                 .build();
 
         if (scheduler.checkExists(job.getKey())) {

@@ -11,5 +11,10 @@ public class HelloJob implements Job {
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
         logger.info("job running");
+        try {
+            Thread.sleep(5000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
